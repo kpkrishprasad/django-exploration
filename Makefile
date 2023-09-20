@@ -4,12 +4,20 @@ SHELL=bash
 # 		cd tutorial; \
 # 		python3 manage.py runserver
 
+run:
+	source venv/bin/activate; \
+		cd todo; \
+		python manage.py runserver
 	
 setup: 
 	python3 -m venv venv
 	source venv/bin/activate; \
 		pip install -r requirements.txt; \
 
+migrate:
+	cd todo; \
+		python manage.py makemigrations; \
+		python manage.py migrate
 
 
 clean:

@@ -11,8 +11,23 @@ python manage.py createsuperuser
 
 http://127.0.0.1:8000/admin/
 http://127.0.0.1:8000/todos/api
+http://127.0.0.1:8000/todos/api/<id>/
+
+
+# Add new items
+curl -u admin:admin http://127.0.0.1:8000/todos/api | jq .
+curl -u admin:admin -X POST -H 'Content-Type: application/json' http://127.0.0.1:8000/todos/api -d '{"task": "New Task1","completed": false}' | jq .
+
+curl -u krish:djangoadmin -X POST -H 'Content-Type: application/json' http://127.0.0.1:8000/todos/api -d '{"task": "New Task1","completed": false}' | jq .
+
 
 # sqlite3 commands
-- sqlite3 todo/db.sqlite3
-- .tables
-- SELECT * FROM table
+```
+sqlite3 todo/db.sqlite3
+.tables
+SELECT * FROM table
+```
+
+#passwords
+admin/admin
+krish/djangoadmin

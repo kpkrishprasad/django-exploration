@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from rest_framework import serializers
+
 
 class Todo(models.Model):
     task = models.CharField(max_length = 180)
@@ -10,3 +12,8 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.task
+
+class TodoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Todo
+        fields = ["task", "completed", "timestamp", "updated", "user"]

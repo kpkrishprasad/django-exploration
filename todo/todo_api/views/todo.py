@@ -58,11 +58,11 @@ class TodoView(APIView):
             'completed': request.data.get('completed'), 
             'user': request.user.id
         }
-        serializer = TodoSerializer(instance = todo_instance, data=data, partial = True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        todo = TodoSerializer(instance = todo_instance, data=data, partial = True)
+        if todo.is_valid():
+            todo.save()
+            return Response(todo.data, status=status.HTTP_200_OK)
+        return Response(todo.errors, status=status.HTTP_400_BAD_REQUEST)
 
     # 5. Delete
     def delete(self, request, todo_id, *args, **kwargs):

@@ -7,8 +7,7 @@ from .views.todo import (
 )
 
 urlpatterns = [
-    path('api', TodoListView.as_view()),
-    path('api/<int:todo_id>/', TodoView.as_view()),
-
-
+    path('todos', TodoListView.as_view()),
+    path('todos/<int:todo_id>/', TodoView.as_view()),
 ]
+
